@@ -47,4 +47,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerHealth" />
 
+    <TextView
+        android:id="@+id/monsterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LVL 3 | Golem"
+        app:layout_constraintBottom_toTopOf="@+id/monsterHealth"
+        app:layout_constraintStart_toStartOf="@+id/monsterHealth" />
+
+    <ProgressBar
+        android:id="@+id/monsterHealth"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:progress="100"
+        android:progressTint="#FF1100"
+        android:scaleY="3"
+        app:layout_constraintBottom_toTopOf="@+id/monster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/monster"
+        android:layout_width="267dp"
+        android:layout_height="298dp"
+        android:layout_marginTop="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/golem" />
+
+    <TextView
+        android:id="@+id/damageIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="ATK | MAG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

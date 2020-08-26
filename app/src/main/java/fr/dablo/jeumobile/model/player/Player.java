@@ -1,6 +1,6 @@
 package fr.dablo.jeumobile.model.player;
 
-import fr.dablo.jeumobile.model.Monster;
+import fr.dablo.jeumobile.model.monster.Monster;
 
 public class Player {
 
@@ -25,8 +25,10 @@ public class Player {
 
     private int statPoints;
 
-    private int attackDamage;
+    private int physicDamage;
     private int magicDamage;
+    private int physicResistance;
+    private int magicResistance;
 
     public Player(){
 
@@ -41,6 +43,9 @@ public class Player {
 
     public void takeDamage(int damage){
         currentHp -= damage;
+        if (currentHp < 0){
+            currentHp = 0;
+        }
     }
 
     public void attack(int damage, Monster monster){
@@ -49,6 +54,22 @@ public class Player {
 
     public void attack(int damage, Player player){
         player.takeDamage(damage);
+    }
+
+    public int getPhysicResistance() {
+        return physicResistance;
+    }
+
+    public void setPhysicResistance(int physicResistance) {
+        this.physicResistance = physicResistance;
+    }
+
+    public int getMagicResistance() {
+        return magicResistance;
+    }
+
+    public void setMagicResistance(int magicResistance) {
+        this.magicResistance = magicResistance;
     }
 
     public int getStamina() {
@@ -67,12 +88,12 @@ public class Player {
         this.accuracy = accuracy;
     }
 
-    public int getAttackDamage() {
-        return attackDamage;
+    public int getPhysicDamage() {
+        return physicDamage;
     }
 
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
+    public void setPhysicDamage(int physicDamage) {
+        this.physicDamage = physicDamage;
     }
 
     public int getMagicDamage() {
