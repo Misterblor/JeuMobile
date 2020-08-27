@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
         android:text="Player"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,8 +21,9 @@
         android:id="@+id/playerLVL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
         android:text="LVL 1 (0/20)"
         app:layout_constraintStart_toEndOf="@+id/playerName"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +53,7 @@
         android:id="@+id/monsterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="LVL 3 | Golem"
         app:layout_constraintBottom_toTopOf="@+id/monsterHealth"
         app:layout_constraintStart_toStartOf="@+id/monsterHealth" />
@@ -82,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif"
         android:text="ATK | MAG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

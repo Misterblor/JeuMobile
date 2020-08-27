@@ -2,13 +2,14 @@ package fr.dablo.jeumobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import fr.dablo.jeumobile.model.monster.type.Barbarian;
 import fr.dablo.jeumobile.model.monster.type.Golem;
 import fr.dablo.jeumobile.model.player.classes.Wizard;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private final Wizard playerWizard = new Wizard();
 
     private Golem monsterGolem = new Golem();
+    private Barbarian monsterBarbarian = new Barbarian();
 
     private TextView damageIndicator;
 
@@ -45,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         monsterHealth = findViewById(R.id.monsterHealth);
         monster = findViewById(R.id.monster);
 
-
-        playerWizard.setName("Misterblor/JayR");
+        playerWizard.setName("Steve");
 
         playerName.setText(playerWizard.getName());
         playerLVL.setText(" | LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
@@ -79,4 +80,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
