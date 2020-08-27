@@ -8,7 +8,7 @@ public class Golem extends Monster {
     private final double ratioMagicDamage = 0.12;
 
     private final double ratioPhysicResistance = 2.45;
-    private final double ratioMagicResistance = 1.12;
+    private final double ratioMagicResistance = 22;
 
     private final double ratioHp = 15.95;
 
@@ -23,7 +23,7 @@ public class Golem extends Monster {
         setTotalStats(getLvl()*10);
 
         setStrength((int) Math.round(0.4*getTotalStats()));
-        setIntelligence((int) Math.round(0.5*getTotalStats()));
+        setIntelligence((int) Math.round(0.05*getTotalStats()));
         setAgility((int) Math.round(0.05*getTotalStats()));
         setDexterity((int) Math.round(0.05*getTotalStats()));
         setAccuracy((int) Math.round(0.05*getTotalStats()));
