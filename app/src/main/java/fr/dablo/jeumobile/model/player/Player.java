@@ -25,7 +25,9 @@ public class Player {
     private int accuracy;
     private int stamina;
 
-    private int statPoints;
+    private int totalStats;
+
+    private int currentStatsPoints;
 
     private int physicDamage;
     private int magicDamage;
@@ -41,7 +43,7 @@ public class Player {
         xpNeededToNextLvl = 20;
         ratioLvl = 1.5;
 
-        statPoints = 0;
+        currentStatsPoints = 0;
     }
 
     public void takeDamage(int damage){
@@ -78,6 +80,36 @@ public class Player {
 
     public void attack(int damage, Player player){
         player.takeDamage(damage);
+    }
+
+    public int damageDealtTo(Monster target){
+        double ratioPhysic;
+        double ratioMagic;
+
+        if (target.getPhysicResistance() != 0){
+            ratioPhysic = (double)physicDamage/target.getPhysicResistance();
+        } else {
+            ratioPhysic = 1.25;
+        }
+        if (target.getMagicResistance() !=0){
+            ratioMagic = (double) magicDamage/target.getMagicResistance();
+        } else {
+            ratioMagic = 1.25;
+        }
+
+
+        if (ratioPhysic > 1.25){
+            ratioPhysic = 1.25;
+        }
+        if (ratioMagic > 1.25){
+            ratioMagic = 1.25;
+        }
+        int damage = 0;
+
+        damage += Math.round(physicDamage*ratioPhysic);
+        damage += Math.round(magicDamage*ratioMagic);
+
+        return damage;
     }
 
     public int getPhysicResistance() {
@@ -224,11 +256,11 @@ public class Player {
         this.dexterity = dexterity;
     }
 
-    public int getStatPoints() {
-        return statPoints;
+    public int getCurrentStatsPoints() {
+        return currentStatsPoints;
     }
 
-    public void setStatPoints(int statPoints) {
-        this.statPoints = statPoints;
+    public void setCurrentStatsPoints(int currentStatsPoints) {
+        this.currentStatsPoints = currentStatsPoints;
     }
 }

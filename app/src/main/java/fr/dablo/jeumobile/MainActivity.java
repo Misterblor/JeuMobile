@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         playerWizard.setName("Steve");
 
         playerName.setText(playerWizard.getName());
-        playerLVL.setText(" | LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
+        playerLVL.setText("LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
 
         playerHealth.setProgress((playerWizard.getCurrentHp()/playerWizard.getHpMax())*100);
         playerMana.setProgress((playerWizard.getCurrentMana()/playerWizard.getManaMax())*100);
@@ -66,17 +66,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                playerWizard.attack((playerWizard.getPhysicDamage()/monsterGolem.getPhysicResistance())*playerWizard.getPhysicDamage() + (playerWizard.getMagicDamage()/monsterGolem.getMagicResistance())*playerWizard.getMagicDamage(), monsterGolem);
-                damageIndicator.setText((playerWizard.getPhysicDamage()/monsterGolem.getPhysicResistance())*playerWizard.getPhysicDamage() + " | " + (playerWizard.getMagicDamage()/monsterGolem.getMagicResistance())*playerWizard.getMagicDamage());
+                playerWizard.attack(playerWizard.damageDealtTo(monsterGolem), monsterGolem);
+                damageIndicator.setText(Integer.toString(playerWizard.damageDealtTo(monsterGolem)));
                 monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName() + " (" + monsterGolem.getCurrentHp() + "/" + monsterGolem.getHpMax() + "HP)");
-                monsterHealth.setProgress((int)(((double)monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100));
+                monsterHealth.setProgress(monsterGolem.getHpInPercent());
                 if (monsterGolem.getCurrentHp() == 0){
                     playerWizard.recieveXp(monsterGolem.getXpDropped());
-                    playerLVL.setText(" | LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
+                    playerLVL.setText("LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
                     monsterGolem = new Golem();
                 }
                 monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName() + " (" + monsterGolem.getCurrentHp() + "/" + monsterGolem.getHpMax() + "HP)");
-                monsterHealth.setProgress((int)(((double)monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100));
+                monsterHealth.setProgress(monsterGolem.getHpInPercent());
             }
         });
     }
