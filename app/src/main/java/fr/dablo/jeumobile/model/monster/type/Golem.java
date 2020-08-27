@@ -16,6 +16,9 @@ public class Golem extends Monster {
         setMagicDamage(0);
         setPhysicResistance(getLvl()*(3 + (int)(Math.random() * ((10 - 3) + 1))));
         setMagicResistance(getLvl()*(1 + (int)(Math.random() * ((4 - 1) + 1))));
+
+        setHpMax(100 + (int)(Math.random() * ((250 - 100) + 1)));
+        setCurrentHp(getHpMax());
     }
 
 }

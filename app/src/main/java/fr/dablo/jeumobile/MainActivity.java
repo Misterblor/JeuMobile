@@ -2,6 +2,7 @@ package fr.dablo.jeumobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName());
+        monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName() + " (" + monsterGolem.getCurrentHp() + "/" + monsterGolem.getHpMax() + "HP)");
         monsterHealth.setProgress((monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100);
 
         damageIndicator = findViewById(R.id.damageIndicator);
@@ -66,11 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
                 playerWizard.attack((playerWizard.getPhysicDamage()/monsterGolem.getPhysicResistance())*playerWizard.getPhysicDamage() + (playerWizard.getMagicDamage()/monsterGolem.getMagicResistance())*playerWizard.getMagicDamage(), monsterGolem);
                 damageIndicator.setText((playerWizard.getPhysicDamage()/monsterGolem.getPhysicResistance())*playerWizard.getPhysicDamage() + " | " + (playerWizard.getMagicDamage()/monsterGolem.getMagicResistance())*playerWizard.getMagicDamage());
-                monsterHealth.setProgress((monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100);
+                monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName() + " (" + monsterGolem.getCurrentHp() + "/" + monsterGolem.getHpMax() + "HP)");
+                monsterHealth.setProgress((int)(((double)monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100));
                 if (monsterGolem.getCurrentHp() == 0){
+                    playerWizard.recieveXp(monsterGolem.getXpDropped());
+                    playerLVL.setText(" | LVL " + playerWizard.getLvl() + " (" + playerWizard.getCurrentXp() + "/" + playerWizard.getXpNeededToNextLvl() + ")");
                     monsterGolem = new Golem();
                 }
-                monsterHealth.setProgress((monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100);
+                monsterName.setText("LVL " + monsterGolem.getLvl() + " | " + monsterGolem.getName() + " (" + monsterGolem.getCurrentHp() + "/" + monsterGolem.getHpMax() + "HP)");
+                monsterHealth.setProgress((int)(((double)monsterGolem.getCurrentHp()/monsterGolem.getHpMax())*100));
             }
         });
     }

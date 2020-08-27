@@ -15,6 +15,8 @@ public class Player {
     private int lvl;
     private int currentXp;
     private int xpNeededToNextLvl;
+    private double ratioLvl;
+    private final double ratioOfRatioLvl = 1.125;
 
     private int strength;
     private int intelligence;
@@ -37,6 +39,7 @@ public class Player {
         lvl = 1;
         currentXp = 0;
         xpNeededToNextLvl = 20;
+        ratioLvl = 1.5;
 
         statPoints = 0;
     }
@@ -45,6 +48,27 @@ public class Player {
         currentHp -= damage;
         if (currentHp < 0){
             currentHp = 0;
+        }
+    }
+
+    public void recieveXp(int xp){
+        int xpToDistribute = xp;
+        if (currentXp + xp < xpNeededToNextLvl) {
+            currentXp += xp;
+        } else if (currentXp + xp == xpNeededToNextLvl) {
+            currentXp = 0;
+            lvl ++;
+            xpNeededToNextLvl *= ratioLvl;
+            ratioLvl *= ratioOfRatioLvl;
+        } else {
+            while (currentXp + xpToDistribute >= xpNeededToNextLvl) {
+                xpToDistribute -= xpNeededToNextLvl - currentXp;
+                currentXp = 0;
+                lvl ++;
+                xpNeededToNextLvl *= ratioLvl;
+                ratioLvl *= ratioOfRatioLvl;
+            }
+            currentXp += xpToDistribute;
         }
     }
 
